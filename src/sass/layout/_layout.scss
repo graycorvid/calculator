@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+}
+.wrap {
+  background-color: var(--clr-100);
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  align-items: center;
+  height: 100%;
+  min-width: 20rem;
+  overflow: hidden;
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-items: center;
+  align-items: center;
+  align-self: flex-end;
+}
+.colors {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: repeat(1fr);
+  justify-content: end;
+  align-items: center;
+  padding: 0 1rem;
+}

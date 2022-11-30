@@ -1,0 +1,44 @@
+// BUTTON STYLE (COLORS)
+
+@use "../abstracts/variables" as *;
+
+:is(.blues, .basic, .disco) {
+  all: unset;
+  border-radius: 50%;
+  min-width: 5rem;
+  min-height: 5rem;
+}
+
+.blues {
+  background-color: rgb(79, 139, 222);
+  box-shadow: 0 0 4px 2px rgb(63, 81, 197);
+}
+.basic {
+  background-color: rgb(138, 129, 124);
+  box-shadow: 0 0 4px 2px rgb(70, 63, 58);
+}
+.disco {
+  background-color: rgb(204, 23, 255);
+  box-shadow: 0 0 4px 2px rgb(105, 23, 208);
+}
+
+.calculator {
+  button {
+    font-family: var(--font-family);
+    font-size: 2rem;
+    border: 1px solid var(--clr-300);
+    border-left: 1px solid var(--clr-200);
+    border-top: 1px solid var(--clr-200);
+    border-radius: 10px;
+    box-shadow: 0 0 2px 1px var(--clr-300);
+    color: var(--clr-100);
+    background-color: var(--clr-400);
+  }
+  .delete {
+    background-color: var(--clr-accent);
+    border: var(--clr-blues-border);
+    border-left: 1px solid var(--clr-top);
+    border-top: 1px solid var(--clr-top);
+    box-shadow: 0 0 3px 1px var(--clr-accent);
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcluator</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+  </head>
+  <body class="default">
+    <div class="wrap">
+      <header class="title">
+        <h1>calculator</h1>
+      </header>
+      <div class="main">
+        <!-- diffrent color options -->
+        <div class="colors">
+          <button class="color blues"></button>
+          <button class="color basic"></button>
+          <button class="color disco"></button>
+        </div>
+        <!-- calculator container -->
+        <div class="calculator-box">
+          <div class="calculator">
+            <div class="screen"><p>0</p></div>
+            <button class="delete grid-calculator-span">c</button>
+            <button data-sign="sign">÷</button>
+            <button data-sign="sign">x</button>
+            <button data-number="digit">1</button>
+            <button data-number="digit">2</button>
+            <button data-number="digit">3</button>
+            <button data-sign="sign">-</button>
+            <button data-number="digit">4</button>
+            <button data-number="digit">5</button>
+            <button data-number="digit">6</button>
+            <button class="add" data-sign="sign">+</button>
+            <button data-number="digit">7</button>
+            <button data-number="digit">8</button>
+            <button data-number="digit">9</button>
+            <button data-number="digit" class="grid-calculator-span">0</button>
+            <button data-sign="dot">.</button>
+            <button data-sign="result">=</button>
+          </div>
+        </div>
+        <div class="filler"></div>
+      </div>
+      <footer><p>@github</p></footer>
+    </div>
+    <script src="../src/js/index.js"></script>
+  </body>
+</html>

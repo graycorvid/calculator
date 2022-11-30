@@ -1,0 +1,11 @@
+@use "../base/typography" as *;
+@use "../abstracts/colors" as *;
+
+:root {
+  @each $theme, $shades in $colors {
+    @each $shade, $rgb in $shades {
+      --clr-#{$shade}: #{$rgb};
+    }
+  }
+  --font-family: "Electrolize", sans-serif;
+}

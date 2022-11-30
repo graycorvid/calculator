@@ -1,0 +1,43 @@
+@use "../abstracts/variables" as *;
+
+.screen {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column: span 4;
+  margin-bottom: 15px;
+  height: 5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 1px var(--clr-300);
+  background-color: var(--clr-400);
+  overflow: hidden;
+  p {
+    padding-right: 1rem;
+    font-size: 3rem;
+    font-family: var(--font-family);
+    color: var(--clr-200);
+  }
+  p.small-font-screen {
+    font-size: 2rem;
+  }
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 15px;
+  min-width: 25rem;
+  width: 30vw;
+  height: 25rem;
+  background-color: var(--clr-500);
+  border-radius: 10px;
+  box-shadow: 0 0 3px 1px var(--clr-500);
+  .add {
+    grid-row: span 2;
+  }
+}
+.grid-calculator-span {
+  grid-column: span 2;
+}

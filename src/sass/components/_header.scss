@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as *;
+
+.title {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--clr-400);
+  font-size: 2rem;
+  font-family: var(--font-family);
+  text-shadow: 3px 3px 2px var(--clr-200);
+}
