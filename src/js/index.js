@@ -42,19 +42,25 @@ const replaceZeroOnScreen = (currentNumber) => {
 const getNumber = (e) => {
   let currentNumber = e.target.textContent;
   replaceZeroOnScreen(currentNumber);
-  if (
-    equationNumber.toString().length <= 6 ||
-    (equationNumber.length.toString().length <= 4 && !dotFlag)
-  ) {
-    calculatorScreenTXT.textContent += e.target.textContent.trim();
-    if (numberFlag) {
-      equationNumber += currentNumber; //gets full number for equations
-    }
+  checkEachNumbersLenght(currentNumber);
+  if (numberFlag) {
+    equationNumber += currentNumber; //gets full number for equations
   }
   makeNumbersSmaller();
 };
+const checkEachNumbersLenght = (currentNumber) => {
+  if (
+    equationNumber.toString().length <= 6 ||
+    (equationNumber.toString().length <= 7 && !dotFlag)
+  ) {
+    calculatorScreenTXT.textContent += currentNumber.trim();
+  }
+};
 //allows dots between numbers
 const getDotSign = () => {
+  if (equationNumber.length.toString().length >= 5) {
+    dotFlag = false;
+  }
   let index = calculatorScreenTXT.textContent.length - 1;
   if (digitRegExp.test(calculatorScreenTXT.textContent[index]) && dotFlag) {
     calculatorScreenTXT.textContent += ".";
