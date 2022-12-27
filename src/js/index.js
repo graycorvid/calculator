@@ -2,20 +2,24 @@
 const bluesThemeBTN = document.querySelector(".color.blues");
 const basicThemeBTN = document.querySelector(".color.basic");
 const discoThemeBTN = document.querySelector(".color.disco");
+const calculatorScreen = document.querySelector(".screen");
 const calculatorScreenTXT = document.querySelector(".screen p");
+const previousEquationTXT = document.querySelector("span.small-equation");
 const numberBTNs = document.querySelectorAll(`[data-number="digit"]`);
 const periodBTN = document.querySelector(`[data-sign="dot"]`);
 const resultBTN = document.querySelector(`[data-sign="result"]`);
 const signBTNs = document.querySelectorAll(`[data-sign="sign"]`);
+const clearBTN = document.querySelector(".delete");
 let dotFlag = true;
 let numberFlag = true;
 let resultFlag = false;
+let zeroFlag = true;
 let finalResult;
-let equationNumber = "";
+let equationNumber = 0;
 const digitRegExp = /[0-9]/;
 const signsArray = [];
 const numbersArray = [];
-//THEMES:
+//THEMES: Each button changes a color theme
 const changeThemeBlues = () => {
   document.body.classList.remove(...document.body.classList);
   document.body.classList.add("default");
@@ -29,7 +33,7 @@ const changeThemeDisco = () => {
   document.body.classList.add("disco-theme");
 };
 //
-//gets number from button and puts it to screen
+//Changes default "0" to the clicked number
 //
 const replaceZeroOnScreen = (currentNumber) => {
   if (
@@ -37,8 +41,12 @@ const replaceZeroOnScreen = (currentNumber) => {
     digitRegExp.test(currentNumber)
   ) {
     calculatorScreenTXT.textContent = "";
+    equationNumber = "";
   }
 };
+//
+//gets number from button and puts it to screen
+//
 const getNumber = (e) => {
   let currentNumber = e.target.textContent;
   replaceZeroOnScreen(currentNumber);
@@ -48,6 +56,9 @@ const getNumber = (e) => {
   }
   makeNumbersSmaller();
 };
+//
+//Controls the max length of each number
+//
 const checkEachNumbersLenght = (currentNumber) => {
   if (
     equationNumber.toString().length <= 6 ||
@@ -56,9 +67,11 @@ const checkEachNumbersLenght = (currentNumber) => {
     calculatorScreenTXT.textContent += currentNumber.trim();
   }
 };
-//allows dots between numbers
+//
+//allows dots between numbers (with rule that doesn't allow multiple ones in one number)
+//
 const getDotSign = () => {
-  if (equationNumber.length.toString().length >= 5) {
+  if (equationNumber.toString().length >= 5) {
     dotFlag = false;
   }
   let index = calculatorScreenTXT.textContent.length - 1;
@@ -68,6 +81,9 @@ const getDotSign = () => {
     dotFlag = false; //turns off
   }
 };
+//
+//Gets the clicked operator sign
+//
 const getMathSign = (e) => {
   let currentSign = e.target;
   let index = calculatorScreenTXT.textContent.length - 1;
@@ -80,11 +96,16 @@ const getMathSign = (e) => {
     createNumberArrayForResult();
   }
 };
-// const makeEquationSmall = () => {};
+//
+//Puts all the operators into an array in order of them being clicked
+//
 const createSignArrayForResult = (sign) => {
   signsArray.push(sign.textContent);
   return signsArray;
 };
+//
+//Puts all the numbers(equationNumber) into an array in order of them being clicked
+//
 const createNumberArrayForResult = () => {
   if (equationNumber !== "") {
     numbersArray.push(parseFloat(equationNumber));
@@ -93,11 +114,14 @@ const createNumberArrayForResult = () => {
     return numbersArray;
   }
 };
-
+//
+//Calculates the result using both arrays
+//
 const getResult = () => {
-  createNumberArrayForResult();
+  let smallEquation = calculatorScreenTXT.textContent;
   calculatorScreenTXT.textContent = "";
   let i = 0;
+  createNumberArrayForResult();
   if (true) {
     finalResult = numbersArray.reduce((a, b) => {
       if (signsArray[i] === "+") {
@@ -117,9 +141,15 @@ const getResult = () => {
     });
   }
   dotFlag = true;
+  numberFlag = true;
+  makePreviousEquationSmall(smallEquation);
   checkResult(finalResult);
   cleanTheValues();
+  makeNumbersSmaller();
 };
+//
+//Formats the result in terms of it ending with decimals or with zeros
+//
 const checkResult = (result) => {
   if (result.toString().includes(".00") || result.toString().includes(".0")) {
     calculatorScreenTXT.textContent = finalResult.toFixed();
@@ -129,16 +159,43 @@ const checkResult = (result) => {
     calculatorScreenTXT.textContent = finalResult;
   }
 };
+//
+//resetes the calculator values
+//
 const cleanTheValues = () => {
   signsArray.splice(0);
   numbersArray.splice(0);
   equationNumber = finalResult;
   numberFlag = true;
 };
+//
+//controls numbers font size
+//
+const makePreviousEquationSmall = (smallEquation) => {
+  previousEquationTXT.textContent = "";
+  previousEquationTXT.textContent = smallEquation + " =";
+};
 const makeNumbersSmaller = () => {
-  if (calculatorScreenTXT.textContent.length > 7) {
+  if (calculatorScreenTXT.textContent.length > 10) {
     calculatorScreenTXT.classList.add("small-font-screen");
+  } else {
+    calculatorScreenTXT.classList.remove("small-font-screen");
   }
+};
+//
+//reset screen to "0"
+//
+const clear = () => {
+  previousEquationTXT.textContent = "";
+  calculatorScreenTXT.textContent = "0";
+  replaceZeroOnScreen();
+  signsArray.splice(0);
+  numbersArray.splice(0);
+  equationNumber = 0;
+  dotFlag = true;
+  numberFlag = true;
+  resultFlag = false;
+  zeroFlag = true;
 };
 numberBTNs.forEach((button) => {
   button.addEventListener("click", getNumber);
@@ -148,6 +205,9 @@ signBTNs.forEach((button) => {
 });
 periodBTN.addEventListener("click", getDotSign);
 resultBTN.addEventListener("click", getResult);
+clearBTN.addEventListener("click", clear);
 bluesThemeBTN.addEventListener("click", changeThemeBlues);
 basicThemeBTN.addEventListener("click", changeThemeBasic);
 discoThemeBTN.addEventListener("click", changeThemeDisco);
+
+//PO WYNIKU NIE BIERZE LICZBY
