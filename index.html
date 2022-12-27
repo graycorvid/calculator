@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calcluator</title>
     <link rel="stylesheet" href="public/css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/bb16009335.js"
+      crossorigin="anonymous"></script>
   </head>
   <body class="default">
     <div class="wrap">
@@ -22,7 +25,10 @@
         <!-- calculator container -->
         <div class="calculator-box">
           <div class="calculator">
-            <div class="screen"><p>0</p></div>
+            <div class="screen">
+              <span class="small-equation"></span>
+              <p>0</p>
+            </div>
             <button class="delete grid-calculator-span">c</button>
             <button data-sign="sign">÷</button>
             <button data-sign="sign">x</button>
@@ -44,7 +50,13 @@
         </div>
         <div class="filler"></div>
       </div>
-      <footer><p>@github</p></footer>
+      <footer>
+        <a href="https://github.com/graycrovv"
+          ><p class="github">
+            <i class="fa-brands fa-github"></i> graycrovv
+          </p></a
+        >
+      </footer>
     </div>
     <script src="../src/js/index.js"></script>
   </body>

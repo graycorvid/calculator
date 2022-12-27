@@ -2,40 +2,81 @@
 
 .screen {
   display: flex;
+  position: relative;
   flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: center;
   grid-column: span 4;
   margin-bottom: 15px;
   height: 5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 2px 1px var(--clr-300);
+  font-family: var(--font-family);
+  border-radius: 4px;
+  box-shadow: 0 0 2px 1px var(--clr-200);
   background-color: var(--clr-400);
   overflow: hidden;
   p {
     padding-right: 1rem;
     font-size: 3rem;
-    font-family: var(--font-family);
     color: var(--clr-200);
   }
   p.small-font-screen {
     font-size: 2rem;
+  }
+  span.small-equation {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: var(--clr-200b);
+    font-size: 0.8rem;
+  }
+  @media (min-width: 480px) {
+    height: 6rem;
+    p {
+      font-size: 3.4rem;
+    }
+    p.small-font-screen {
+      font-size: 2.2rem;
+    }
+    span.small-equation {
+      font-size: 1.2rem;
+    }
+  }
+  @media (min-width: 768px) {
+    height: 8rem;
+    margin-bottom: 10px;
+    p {
+      font-size: 4.2rem;
+    }
+    p.small-font-screen {
+      font-size: 2.8rem;
+    }
+    span.small-equation {
+      font-size: 2rem;
+    }
   }
 }
 
 .calculator {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 15px;
-  min-width: 25rem;
-  width: 30vw;
-  height: 25rem;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  min-width: 60vw;
+  min-height: 40vh;
   background-color: var(--clr-500);
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: 0 0 3px 1px var(--clr-500);
   .add {
     grid-row: span 2;
+  }
+  @media (orientation: landscape) {
+    min-width: 40vw;
+  }
+  @media (min-width: 480px) {
+    gap: 0.7rem;
+  }
+  @media (min-width: 768px) {
+    gap: 1rem;
   }
 }
 .grid-calculator-span {

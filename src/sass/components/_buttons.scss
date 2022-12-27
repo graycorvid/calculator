@@ -5,8 +5,12 @@
 :is(.blues, .basic, .disco) {
   all: unset;
   border-radius: 50%;
-  min-width: 5rem;
-  min-height: 5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  @media (min-width: 480px) {
+    min-width: 4.5rem;
+    min-height: 4.5rem;
+  }
 }
 
 .blues {
@@ -29,7 +33,7 @@
     border: 1px solid var(--clr-300);
     border-left: 1px solid var(--clr-200);
     border-top: 1px solid var(--clr-200);
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: 0 0 2px 1px var(--clr-300);
     color: var(--clr-100);
     background-color: var(--clr-400);
@@ -40,5 +44,10 @@
     border-left: 1px solid var(--clr-top);
     border-top: 1px solid var(--clr-top);
     box-shadow: 0 0 3px 1px var(--clr-accent);
+  }
+  @media (min-width: 480px) {
+    button {
+      font-size: 2.6rem;
+    }
   }
 }
