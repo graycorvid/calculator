@@ -42,6 +42,12 @@ const replaceZeroOnScreen = (currentNumber) => {
   ) {
     calculatorScreenTXT.textContent = "";
     equationNumber = "";
+  } else if (
+    calculatorScreenTXT.textContent === "try again" &&
+    digitRegExp.test(currentNumber)
+  ) {
+    calculatorScreenTXT.textContent = "";
+    equationNumber = "";
   }
 };
 //
@@ -122,7 +128,7 @@ const getResult = () => {
   calculatorScreenTXT.textContent = "";
   let i = 0;
   createNumberArrayForResult();
-  if (true) {
+  if (resultFlag) {
     finalResult = numbersArray.reduce((a, b) => {
       if (signsArray[i] === "+") {
         i++;
@@ -135,8 +141,14 @@ const getResult = () => {
         return a * b;
       }
       if (signsArray[i] === "÷") {
-        i++;
-        return a / b;
+        if (b === 0) {
+          divideByZeroAlert();
+          resultFlag = false;
+          return "try again";
+        } else {
+          i++;
+          return a / b;
+        }
       }
     });
   }
@@ -158,6 +170,9 @@ const checkResult = (result) => {
   } else {
     calculatorScreenTXT.textContent = finalResult;
   }
+};
+const divideByZeroAlert = () => {
+  alert("That's a bad idea :)");
 };
 //
 //resetes the calculator values
