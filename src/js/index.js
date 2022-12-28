@@ -124,11 +124,12 @@ const createNumberArrayForResult = () => {
 //Calculates the result using both arrays
 //
 const getResult = () => {
-  let smallEquation = calculatorScreenTXT.textContent;
-  calculatorScreenTXT.textContent = "";
-  let i = 0;
-  createNumberArrayForResult();
   if (resultFlag) {
+    let smallEquation = calculatorScreenTXT.textContent;
+    calculatorScreenTXT.textContent = "";
+    let i = 0;
+    createNumberArrayForResult();
+
     finalResult = numbersArray.reduce((a, b) => {
       if (signsArray[i] === "+") {
         i++;
@@ -151,13 +152,14 @@ const getResult = () => {
         }
       }
     });
+
+    dotFlag = true;
+    numberFlag = true;
+    makePreviousEquationSmall(smallEquation);
+    checkResult(finalResult);
+    cleanTheValues();
+    makeNumbersSmaller();
   }
-  dotFlag = true;
-  numberFlag = true;
-  makePreviousEquationSmall(smallEquation);
-  checkResult(finalResult);
-  cleanTheValues();
-  makeNumbersSmaller();
 };
 //
 //Formats the result in terms of it ending with decimals or with zeros
