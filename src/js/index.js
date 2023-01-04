@@ -71,6 +71,8 @@ const checkEachNumbersLenght = (currentNumber) => {
     (equationNumber.toString().length <= 7 && !dotFlag)
   ) {
     calculatorScreenTXT.textContent += currentNumber.trim();
+  } else {
+    numberFlag = false;
   }
 };
 //
@@ -114,6 +116,7 @@ const createSignArrayForResult = (sign) => {
 //
 const createNumberArrayForResult = () => {
   if (equationNumber !== "") {
+    console.log(equationNumber);
     numbersArray.push(parseFloat(equationNumber));
     numberFlag = true;
     equationNumber = "";
