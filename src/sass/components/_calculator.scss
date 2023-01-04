@@ -8,6 +8,7 @@
   align-items: center;
   grid-column: span 4;
   margin-bottom: 15px;
+  padding-left: 0.2rem;
   height: 5rem;
   font-family: var(--font-family);
   border-radius: 4px;
@@ -26,6 +27,7 @@
     position: absolute;
     top: 5px;
     left: 5px;
+    padding-right: 0.8rem;
     color: var(--clr-200b);
     font-size: 0.8rem;
   }
@@ -45,13 +47,38 @@
     height: 8rem;
     margin-bottom: 10px;
     p {
-      font-size: 4.2rem;
+      font-size: 4.4rem;
     }
     p.small-font-screen {
       font-size: 2.8rem;
     }
     span.small-equation {
       font-size: 2rem;
+    }
+  }
+  @media (orientation: landscape) {
+    height: 5rem;
+    margin-bottom: 0.8rem;
+    p {
+      font-size: 2.8rem;
+    }
+    p.small-font-screen {
+      font-size: 1.4rem;
+    }
+    span.small-equation {
+      font-size: 1rem;
+    }
+  }
+  @media (orientation: landscape) and (min-width: 768px) {
+    height: 6.2rem;
+    p {
+      font-size: 3rem;
+    }
+    p.small-font-screen {
+      font-size: 2rem;
+    }
+    span.small-equation {
+      font-size: 1.5rem;
     }
   }
 }
@@ -69,13 +96,19 @@
   .add {
     grid-row: span 2;
   }
-  @media (orientation: landscape) {
-    min-width: 40vw;
-  }
   @media (min-width: 480px) {
     gap: 0.7rem;
   }
   @media (min-width: 768px) {
+    gap: 1.1rem;
+  }
+  @media (orientation: landscape) {
+    min-width: 85vw;
+    min-height: 50vh;
+    gap: 0.6rem;
+  }
+  @media (orientation: landscape) and (min-width: 768px) {
+    min-width: 30vw;
     gap: 1rem;
   }
 }
