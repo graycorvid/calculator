@@ -1,9 +1,13 @@
 # calculator
 This one doesn't require a long introduction: basic calculator made with HTML, SCSS and JavaScript. 
 3 diffrent color themes avaible.
+Next on the to do list:
+- add backspace button
+- allow keyboard input
 
 ## Additional information:
 Simple calculator that allows numbers up to 7 digits in length as input. The result is rounded to 2 decimal places. 
+
 
 ***IMPORTANT:*** as of right now the calculator does NOT follow order of operations - it calculates the result in order of used operators!
 
