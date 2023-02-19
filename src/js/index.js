@@ -229,5 +229,3 @@ clearBTN.addEventListener("click", clear);
 bluesThemeBTN.addEventListener("click", changeThemeBlues);
 basicThemeBTN.addEventListener("click", changeThemeBasic);
 discoThemeBTN.addEventListener("click", changeThemeDisco);
-
-//PO WYNIKU NIE BIERZE LICZBY
