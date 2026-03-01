@@ -6,31 +6,11 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:sass": "sass  --no-source-map src/sass:public/css",
-    "copy:html": "copyfiles -u 1 ./src/*.html public",
-    "copy": "npm-run-all --parallel copy:*",
-    "watch:html": "onchange 'src/*.html' -- npm run copy:html",
-    "watch:sass": "sass  --no-source-map --watch src/sass:public/css",
-    "watch": "npm-run-all --parallel watch:*",
-    "serve": "browser-sync start --server public --files public",
-    "start": "npm-run-all copy --parallel watch serve",
-    "build": "npm-run-all copy:html build:*",
-    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
-  },
-  "dependencies": {
-    "autoprefixer": "^10.4.15",
-    "browser-sync": "^3.0.2",
-    "copyfiles": "^2.4.1",
-    "cssnano": "^5.1.15",
-    "npm-run-all": "^4.1.5",
-    "onchange": "^7.1.0",
-    "postcss-cli": "^9.1.0",
-    "sass": "^1.66.1",
-    "ws": ">=8.17.1"
+    "sass-dev": "sass --watch --update --style=expanded src/sass:src/css",
+    "sass-prod": "sass --no-source-map --style=compressed src/sass:src/css",
+    "build": "npm run sass-prod"
   },
   "devDependencies": {
-    "eslint": "^8.48.0",
-    "ws": ">=8.17.1"
+    "sass": "^1.49.8"
   }
 }
